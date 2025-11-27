@@ -29,7 +29,7 @@ app.post('/cai-webhook', async (req, res) => {
         console.warn(`Primary model ${modelName} failed. Trying fallback model...`);
         console.error("Primary Error:", apiError.response ? apiError.response.data : apiError.message);
 
-        const fallbackUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
+        const fallbackUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
         const fallbackResponse = await axios.post(
             fallbackUrl,
             { contents: [{ parts: [{ text: userMessage }] }] },
